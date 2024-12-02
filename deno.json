@@ -1,0 +1,6 @@
+{
+  "tasks": {
+    "day-1": "deno run day-1/day-1.js"
+  },
+  "imports": {}
+}
