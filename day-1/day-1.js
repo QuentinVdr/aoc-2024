@@ -1,7 +1,7 @@
-import { firstList, secondList } from "./input.js";
+import { rightList } from "./input.js";
 
-const orderedFirstList = firstList.toSorted((a, b) => a - b);
-const orderedSecondList = secondList.toSorted((a, b) => a - b);
+const orderedFirstList = rightList.toSorted((a, b) => a - b);
+const orderedSecondList = rightList.toSorted((a, b) => a - b);
 
 let result = 0;
 
@@ -13,4 +13,4 @@ for (let i = 0; i < orderedFirstList.length; i++) {
   }
 }
 
-console.log(`The total distance is : ${result}`);
+console.log(`The total distance between the two list is : ${result}`);
