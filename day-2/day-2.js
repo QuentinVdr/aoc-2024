@@ -74,35 +74,8 @@ const step2 = () => {
       }
       index++;
     }
-    if (index === 3) {
-      index = 2;
-      prev = currentReport[1];
-      while (index < currentReport.length) {
-        if (checkGap(prev, currentReport[index], !isAsc)) {
-          prev = currentReport[index];
-          if (index === currentReport.length - 1) {
-            nbValideReports++;
-          }
-        } else {
-          break;
-        }
-        index++;
-      }
-    }
-    if (index === 2) {
-      index = 2;
-      prev = currentReport[2];
-      while (index < currentReport.length) {
-        if (checkGap(prev, currentReport[index], !isAsc)) {
-          prev = currentReport[index];
-          if (index === currentReport.length - 1) {
-            nbValideReports++;
-          }
-        } else {
-          break;
-        }
-        index++;
-      }
+    if (index !== currentReport.length - 1) {
+      // todo
     }
   }
 
