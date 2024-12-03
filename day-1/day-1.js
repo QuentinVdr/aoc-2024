@@ -1,9 +1,8 @@
 import { leftList, rightList } from "./input.js";
 
-// first step of day 1
-
 const step1 = () => {
-  console.log("The first step of day 1 is running...");
+  console.log("----------------------------------------------------");
+  console.log("The first step is running...");
 
   const orderedLeftList = leftList.toSorted((a, b) => a - b);
   const orderedRightList = rightList.toSorted((a, b) => a - b);
@@ -19,16 +18,12 @@ const step1 = () => {
   }
 
   console.log(`The total distance between the two list is : ${result}`);
+  console.log("----------------------------------------------------");
 };
 
-step1();
-
-console.log("----------------------------------------------------");
-
-// second step of day 1
-
 const step2 = () => {
-  console.log("The second step of day 1 is running...");
+  console.log("----------------------------------------------------");
+  console.log("The second step is running...");
 
   const leftListLength = leftList.length;
   const rightMap = new Map();
@@ -50,6 +45,10 @@ const step2 = () => {
   }
 
   console.log(`The similarity score is : ${result}`);
+  console.log("----------------------------------------------------");
 };
 
+console.log("----------------------------------------------------");
+console.log("Day 1");
+step1();
 step2();
