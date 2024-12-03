@@ -11,6 +11,19 @@ const checkGap = (prev, current, isAsc) => {
   return true;
 };
 
+const validateReport = (report) => {
+  const isAsc = report[0] < report[1];
+
+  let prev = report[0];
+  for (let j = 1; j < report.length; j++) {
+    if (!checkGap(prev, report[j], isAsc)) {
+      return false;
+    }
+    prev = report[j];
+  }
+  return true;
+};
+
 const step1 = () => {
   console.log("----------------------------------------------------");
   console.log("Step 1 : Running...");
@@ -18,17 +31,8 @@ const step1 = () => {
   let nbValideReports = 0;
 
   for (const currentReport of reports) {
-    let prev = currentReport[0];
-    if (prev === currentReport[1]) {
-      continue;
-    }
-    const isAsc = prev < currentReport[1];
-    for (let j = 1; j < currentReport.length; j++) {
-      if (!checkGap(prev, currentReport[j], isAsc)) {
-        break;
-      }
-      prev = currentReport[j];
-      if (j === currentReport.length - 1) {
+    if (currentReport[0] !== currentReport[1]) {
+      if (validateReport(currentReport)) {
         nbValideReports++;
       }
     }
@@ -44,8 +48,7 @@ const step2 = () => {
 
   let nbValideReports = 0;
 
-  for (let i = 0; i < reports.length; i++) {
-    const currentReport = reports[i];
+  for (const currentReport of reports) {
     let prev = currentReport[0];
     let isSecondChance = false;
     let index = 1;
@@ -86,9 +89,9 @@ const step2 = () => {
         index++;
       }
     }
-    if (index === 3) {
+    if (index === 2) {
       index = 2;
-      prev = currentReport[1];
+      prev = currentReport[2];
       while (index < currentReport.length) {
         if (checkGap(prev, currentReport[index], !isAsc)) {
           prev = currentReport[index];
