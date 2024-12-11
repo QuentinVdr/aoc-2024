@@ -1,7 +1,8 @@
 {
   "tasks": {
     "day-1": "deno run day-1/day-1.js",
-    "day-2": "deno run day-2/day-2.js"
+    "day-2": "deno run day-2/day-2.js",
+    "day-3": "deno run --allow-read day-3/day-3.js"
   },
   "imports": {}
 }
