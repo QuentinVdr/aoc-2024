@@ -5,10 +5,7 @@ const checkGap = (prev, current, isAsc) => {
   if (Math.abs(gap) > 3 || Math.abs(gap) < 1) {
     return false;
   }
-  if ((isAsc && gap < 0) || (!isAsc && gap > 0)) {
-    return false;
-  }
-  return true;
+  return !((isAsc && gap < 0) || (!isAsc && gap > 0));
 };
 
 const validateReport = (report) => {
@@ -49,33 +46,16 @@ const step2 = () => {
   let nbValideReports = 0;
 
   for (const currentReport of reports) {
-    let prev = currentReport[0];
-    let isSecondChance = false;
-    let index = 1;
-    if (prev === currentReport[1]) {
-      if (currentReport[1] === currentReport[2]) {
-        continue;
-      }
-      isSecondChance = true;
-      index = 2;
+    if (validateReport(currentReport)) {
+      nbValideReports++;
+      continue;
     }
-    const isAsc = prev < currentReport[index];
-    while (index < currentReport.length) {
-      if (checkGap(prev, currentReport[index], isAsc)) {
-        prev = currentReport[index];
-        if (index === currentReport.length - 1) {
-          nbValideReports++;
-        }
-      } else {
-        if (isSecondChance) {
-          break;
-        }
-        isSecondChance = true;
+
+    for (let i = 0; i < currentReport.length; i++) {
+      if (validateReport(currentReport.toSpliced(i, 1))) {
+        nbValideReports++;
+        break;
       }
-      index++;
-    }
-    if (index !== currentReport.length - 1) {
-      // todo
     }
   }
 
