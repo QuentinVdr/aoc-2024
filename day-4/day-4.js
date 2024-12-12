@@ -3,7 +3,6 @@ const step1 = () => {
   console.log("Step 1 : Running...");
 
   const textLines = Deno.readTextFileSync("day-4/input.txt").split("\r\n");
-  console.log("🚀 ~ step1 ~ textLines:", textLines);
 
   const regex = /XMAS|SAMX/g;
   const matches = textLines.map((line) => line.matchAll(regex)).flat();
@@ -34,8 +33,7 @@ const step1 = () => {
         ) {
           xmasCount++;
         }
-      }
-      if (textLines[line][char] === "S") {
+      } else if (textLines[line][char] === "S") {
         if (
           textLines[line + 1][char + 1] === "A" &&
           textLines[line + 2][char + 2] === "M" &&
