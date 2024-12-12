@@ -1,3 +1,11 @@
 {
-  "deno.enable": true
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "cSpell.words": ["xmas"],
+  "files.eol": "\n" // Add this line to enforce Unix-style line endings
 }
