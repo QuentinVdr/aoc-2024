@@ -68,3 +68,5 @@ const step1 = () => {
 console.log("----------------------------------------------------");
 console.log("--- Day 4: Ceres Search ---");
 step1();
+
+// Try : 2088 to low
