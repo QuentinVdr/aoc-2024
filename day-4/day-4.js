@@ -6,7 +6,7 @@ const step1 = () => {
 
   let xmasCount = 0;
 
-  function searchXmasInDirection(line, char, lineDirection, charDirection) {
+  const searchXmasInDirection = (line, char, lineDirection, charDirection) => {
     if (
       line + lineDirection * 3 < 0 ||
       line + lineDirection * 3 >= textLines.length ||
@@ -25,7 +25,7 @@ const step1 = () => {
     }
 
     return 1;
-  }
+  };
 
   for (let line = 0; line < textLines.length; line++) {
     for (let char = 0; char < textLines[line].length; char++) {
@@ -49,6 +49,30 @@ const step1 = () => {
   console.log("----------------------------------------------------");
 };
 
+const step2 = () => {
+  console.log("----------------------------------------------------");
+  console.log("Step 2 : Running...");
+
+  const textLines = Deno.readTextFileSync("day-4/input.txt").split("\n");
+
+  let xmasCount = 0;
+
+  const searchXMasInDirection = (line, char) => {
+  };
+
+  for (let line = 1; line < textLines.length - 1; line++) {
+    for (let char = 1; char < textLines[line].length - 1; char++) {
+      xmasCount += searchXmasInDirection(
+        char,
+        line,
+      );
+    }
+  }
+
+  console.log("----------------------------------------------------");
+};
+
 console.log("----------------------------------------------------");
 console.log("--- Day 4: Ceres Search ---");
 step1();
+step2();
