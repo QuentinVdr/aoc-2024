@@ -57,18 +57,34 @@ const step2 = () => {
 
   let xmasCount = 0;
 
-  const searchXMasInDirection = (line, char) => {
+  const searchMasInXShape = (line, char) => {
+    const diag1 = textLines[line - 1][char - 1] + textLines[line + 1][char + 1];
+    const diag2 = textLines[line - 1][char + 1] + textLines[line + 1][char - 1];
+
+    const expectedDiagonals = ["SM", "MS"];
+
+    if (
+      expectedDiagonals.includes(diag1) || expectedDiagonals.includes(diag2)
+    ) {
+      return 1;
+    }
+
+    return 0;
   };
 
-  for (let line = 1; line < textLines.length - 1; line++) {
-    for (let char = 1; char < textLines[line].length - 1; char++) {
-      xmasCount += searchXmasInDirection(
+  for (let line = 1; line < textLines.length; line++) {
+    for (let char = 1; char < textLines[line].length; char++) {
+      if (textLines[line][char] !== "A") {
+        continue;
+      }
+      xmasCount += searchMasInXShape(
         char,
         line,
       );
     }
   }
 
+  console.log(`The count of "MAS" in X shape is : ${xmasCount}`);
   console.log("----------------------------------------------------");
 };
 
@@ -76,3 +92,5 @@ console.log("----------------------------------------------------");
 console.log("--- Day 4: Ceres Search ---");
 step1();
 step2();
+
+// step 2 1546 to low
