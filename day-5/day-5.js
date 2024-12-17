@@ -20,23 +20,22 @@ const step1 = () => {
   let result = 0;
 
   const isQueueValid = (queue) => {
-    for (let i = 0; i < queue.length; i++) {
-      const page = queue[i];
-      if (i === 0 || !orders[page]) {
-        continue;
-      }
-      if (
-        queue.slice(0, i).some((prevPage) => orders[page].includes(prevPage))
-      ) {
+    for (let i = 1; i < queue.length; i++) {
+      const prevPages = queue.slice(0, i);
+      if (orders[queue[i]].some((order) => prevPages.includes(order))) {
         return false;
       }
     }
     return true;
   };
 
+  const findMiddlePage = (queue) => {
+    return Number(queue[Math.floor(queue.length / 2)]);
+  };
+
   for (const queue of queues) {
     if (isQueueValid(queue)) {
-      result += parseInt(queue[queue.length / 2 + 0.5]);
+      result += findMiddlePage(queue);
     }
   }
 
@@ -49,5 +48,3 @@ const step1 = () => {
 console.log("----------------------------------------------------");
 console.log("--- Day 5: Print Queue ---");
 step1();
-
-// 4841 to low
