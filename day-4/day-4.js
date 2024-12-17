@@ -64,7 +64,7 @@ const step2 = () => {
     const expectedDiagonals = ["SM", "MS"];
 
     if (
-      expectedDiagonals.includes(diag1) || expectedDiagonals.includes(diag2)
+      expectedDiagonals.includes(diag1) && expectedDiagonals.includes(diag2)
     ) {
       return 1;
     }
@@ -72,15 +72,11 @@ const step2 = () => {
     return 0;
   };
 
-  for (let line = 1; line < textLines.length; line++) {
-    for (let char = 1; char < textLines[line].length; char++) {
-      if (textLines[line][char] !== "A") {
-        continue;
+  for (let line = 1; line < textLines.length - 1; line++) {
+    for (let char = 1; char < textLines[line].length - 1; char++) {
+      if (textLines[line][char] === "A") {
+        xmasCount += searchMasInXShape(line, char);
       }
-      xmasCount += searchMasInXShape(
-        char,
-        line,
-      );
     }
   }
 
@@ -92,5 +88,3 @@ console.log("----------------------------------------------------");
 console.log("--- Day 4: Ceres Search ---");
 step1();
 step2();
-
-// step 2 1546 to low
