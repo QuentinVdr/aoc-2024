@@ -6,5 +6,8 @@
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
   "cSpell.words": ["xmas"],
-  "files.eol": "\n" // Add this line to enforce Unix-style line endings
+  "deno.enable": true,
+  "files.eol": "\n", // Add this line to enforce Unix-style line endings
+  "javascript.suggest.enabled": false,
+  "typescript.suggest.enabled": false
 }
