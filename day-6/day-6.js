@@ -78,7 +78,38 @@ const step1 = () => {
   console.log("----------------------------------------------------");
 };
 
+const step2 = () => {
+  console.log("----------------------------------------------------");
+  console.log(`${bold}Step 2 : Running...${reset}`);
+
+  const map = Deno.readTextFileSync("day-6/input.txt").split("\n").map((line) =>
+    line.split("")
+  );
+
+  const guard = { x: null, y: null, direction: "up" };
+
+  for (let i = 0; i < map.length; i++) {
+    const guardIndex = map[i].findIndex((element) => element === "^");
+    if (guardIndex !== -1) {
+      guard.x = guardIndex;
+      guard.y = i;
+      break;
+    }
+  }
+
+  const distinctPositions = new Set();
+  distinctPositions.add(`${guard.x},${guard.y}`);
+
+  const obstructionPositions = new Set();
+
+  console.log(
+    `There is ${bold}${obstructionPositions.size}${reset} different positions for this obstruction`,
+  );
+  console.log("----------------------------------------------------");
+};
+
 console.log("----------------------------------------------------");
 console.log(`--- ${bold}Day 6: Guard Gallivant${reset} ---`);
 console.log("----------------------------------------------------");
 step1();
+step2();
