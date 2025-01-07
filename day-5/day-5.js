@@ -85,13 +85,16 @@ const step2 = () => {
   const correctQueue = (queue) => {
     while (!isQueueValid(queue)) {
       for (let i = 1; i < queue.length; i++) {
-        const prevPages = queue.slice(0, i);
-        if (!orders[queue[i]]) {
+        const page = queue[i];
+        if (!orders[page]) {
+          queue.splice(i, 1);
+          queue.add(page);
           continue;
         }
-        if (orders[queue[i]].some((order) => prevPages.includes(order))) {
+        const prevPages = queue.slice(0, i);
+        if (orders[page].some((order) => prevPages.includes(order))) {
           queue.splice(i, 1);
-          queue.splice(i - 1, 0, queue[i]);
+          queue.splice(i - 1, 0, page);
         }
       }
     }
